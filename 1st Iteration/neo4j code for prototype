@@ -1,0 +1,259 @@
+# Creating 12 User nodes
+CREATE (Ben:User{name:'Recruit Ben',born:1998,location:'Choa Chu Kang'})
+CREATE(Tom:User{name:'Major Tom', born:1958, location:'Sengkang'})
+CREATE(Sam:User{name:'Capt Sam', born:1980,location:'Choa Chu Kang'})
+CREATE(Aaron:User{name:'Corporal Aaron',born:1970,location:'Punggol'})
+CREATE(Gerald:User{name:'Private Gerald',born:1988,location:'Punggol'})
+CREATE(James:User{name:'Recruit James', born:1999,location:'Sengkang'})
+CREATE(Fred:User{name:'Private Fred',born:1997,location:'Choa Chu Kang'})
+CREATE(Rachel:User{name:'Sergeant Rachel', born:1988, location:'Punggol'})
+CREATE(Venice:User{name:'Major Venice', born:1998, location:'Sengkang'})
+CREATE(Cally:User{name:'Capt Cally', born:1980, location: 'Choa Chu Kang'})
+CREATE(Henderson:User{name:'Lieut Henderson', born:1995, location:'Punggol'})
+CREATE(Kenneth:User{name:'General Kenneth',born:1977,location:'Sengkang'})
+
+# Creating 20 Document nodes
+CREATE(Document1:Document{name:'Document1',location:'Punggol',year:2016})
+CREATE(Document2:Document{name:'Document2',location:'Sengkang',year:2017})
+CREATE(Document3:Document{name:'Document3', location:'Choa Chu Kang', year:2010})
+CREATE(Document4:Document{name: 'Document4', location: 'Sengkang', year: 2015})
+CREATE(Document5:Document{name:'Document5',location:'Punggol', year:2018})
+CREATE(Document6:Document{name:'Document6',location:'Sengkang', year:2015})
+CREATE(Document7:Document{name:'Document7', location:'Choa Chu Kang', year:2008})
+CREATE(Document8:Document{name:'Document8',location:'Choa Chu Kang', year: 2019})
+CREATE(Document9:Document{name:'Document9',location:'Punggol',year:2008})
+CREATE(Document10:Document{name:'Document10',location:'Sengkang',year:2020})
+CREATE(Document11:Document{name:'Document11',location:'Sengkang',year:2010})
+CREATE(Document12:Document{name:'Document12',location:'Punggol', year:2016})
+CREATE(Document13:Document{name:'Document13',location:'Choa Chu Kang', year: 2018})
+CREATE(Document14:Document{name:'Document14',location:'Punggol',year:2014})
+CREATE(Document15:Document{name:'Document15',location:'Punggol',year:2011})
+CREATE(Document16:Document{name:'Document16',location:'Sengkang',year:2017})
+CREATE(Document17:Document{name:'Document17',location:'Choa Chu Kang', year:2020})
+CREATE(Document18:Document{name:"Document18",location:'Choa Chu Kang', year: 2016})
+CREATE(Document19:Document{name: 'Document19', location: 'Choa Chua Kang', year:2011})
+CREATE(Document20:Document{name: 'Document20', location: 'Sengkang', year:2018})
+
+# Creating the relationships
+MATCH (ben:User {name:"Recruit Ben"}), (Document3:Document{name:"Document3"}), (Document7:Document{name:"Document7"})
+CREATE (ben)-[:LIKED{timestamp:2019}]->(Document3)
+CREATE (ben)-[:LIKED{timestamp:2010}]->(Document7)
+
+MATCH (tom:User {name: "Major Tom"}), (Document10:Document{name:"Document10"}), (Document2:Document{name:"Document2"}), (Document13:Document{name:"Document13"})
+CREATE (tom)-[:LIKED{timestamp:2020}]->(Document10)
+CREATE (tom)-[:LIKED{timestamp:2019}]->(Document2)
+CREATE (tom)-[:LIKED{timestamp:2020}]->(Document13)
+
+MATCH (sam:User {name:"Capt Sam"}), (Document7:Document{name:"Document7"}),(Document8:Document{name:"Document8"}),(Document17:Document{name:"Document17"})
+CREATE (sam)-[:LIKED{timestamp:2010}]->(Document7)
+CREATE (sam)-[:LIKED{timestamp:2019}]->(Document8)
+CREATE (sam)-[:LIKED{timestamp:2020}]->(Document17)
+
+MATCH (aaron:User {name:"Corporal Aaron"}), (Document1:Document{name:"Document1"}),(Document5:Document{name:"Document5"}),(Document9:Document{name:"Document9"})
+CREATE (aaron)-[:LIKED{timestamp:2017}]->(Document1)
+CREATE (aaron)-[:LIKED{timestamp:2019}]->(Document5)
+CREATE (aaron)-[:LIKED{timestamp:2008}]->(Document9)
+
+MATCH (ger:User {name:"Private Gerald"}), (Document14:Document{name:"Document14"}),(Document15:Document{name:"Document15"}),(Document9:Document{name:"Document9"})
+CREATE (ger)-[:LIKED{timestamp:2017}]->(Document14)
+CREATE (ger)-[:LIKED{timestamp:2012}]->(Document15)
+CREATE (ger)-[:LIKED{timestamp:2009}]->(Document9)
+
+MATCH (james:User {name:"Recruit James"}), (Document2:Document{name:"Document2"}),(Document10:Document{name:"Document10"}),(Document11:Document{name:"Document11"}),
+(Document16:Document{name:"Document16"})
+CREATE (james)-[:LIKED{timestamp:2017}]->(Document2)
+CREATE (james)-[:LIKED{timestamp:2020}]->(Document10)
+CREATE (james)-[:LIKED{timestamp:2015}]->(Document11)
+CREATE (james)-[:LIKED{timestamp:2018}]->(Document16)
+
+MATCH (fred:User {name:"Private Fred"}), (Document7:Document{name:"Document7"}),(Document8:Document{name:"Document8"}),(Document17:Document{name:"Document17"}),
+(Document18:Document{name:"Document18"})
+CREATE (fred)-[:LIKED{timestamp:2010}]->(Document7)
+CREATE (fred)-[:LIKED{timestamp:2019}]->(Document8)
+CREATE (fred)-[:LIKED{timestamp:2020}]->(Document17)
+CREATE (fred)-[:LIKED{timestamp:2018}]->(Document18)
+
+MATCH (rach:User {name:"Sergeant Rachel"}), (Document9:Document{name:"Document9"}),(Document12:Document{name:"Document12"}),(Document5:Document{name:"Document5"}),
+(Document15:Document{name:"Document15"})
+CREATE (rach)-[:LIKED{timestamp:2010}]->(Document9)
+CREATE (rach)-[:LIKED{timestamp:2019}]->(Document12)
+CREATE (rach)-[:LIKED{timestamp:2019}]->(Document5)
+CREATE (rach)-[:LIKED{timestamp:2014}]->(Document15)
+
+MATCH (ven:User {name:"Major Venice"}), (Document20:Document{name:"Document20"}),(Document4:Document{name:"Document4"}),(Document6:Document{name:"Document6"}),
+(Document19:Document{name:"Document19"})
+CREATE (ven)-[:LIKED{timestamp:2012}]->(Document19)
+CREATE (ven)-[:LIKED{timestamp:2019}]->(Document20)
+CREATE (ven)-[:LIKED{timestamp:2016}]->(Document4)
+CREATE (ven)-[:LIKED{timestamp:2015}]->(Document6)
+
+MATCH (cal:User {name:"Capt Cally"}), (Document20:Document{name:"Document20"}),(Document19:Document{name:"Document19"}),(Document3:Document{name:"Document3"}),
+(Document8:Document{name:"Document8"})
+CREATE (cal)-[:LIKED{timestamp:2012}]->(Document19)
+CREATE (cal)-[:LIKED{timestamp:2019}]->(Document20)
+CREATE (cal)-[:LIKED{timestamp:2010}]->(Document3)
+CREATE (cal)-[:LIKED{timestamp:2019}]->(Document8)
+
+MATCH (hen:User {name:"Lieut Henderson"}), (Document1:Document{name:"Document1"}),(Document5:Document{name:"Document5"}),(Document12:Document{name:"Document12"}),
+(Document2:Document{name:"Document2"})
+CREATE (hen)-[:LIKED{timestamp:2017}]->(Document1)
+CREATE (hen)-[:LIKED{timestamp:2019}]->(Document5)
+CREATE (hen)-[:LIKED{timestamp:2016}]->(Document12)
+CREATE (hen)-[:LIKED{timestamp:2017}]->(Document2)
+
+MATCH (ken:User {name:"General Kenneth"}), (Document6:Document{name:"Document6"}),(Document10:Document{name:"Document10"}),(Document7:Document{name:"Document7"}),
+(Document11:Document{name:"Document11"})
+CREATE (ken)-[:LIKED{timestamp:2016}]->(Document6)
+CREATE (ken)-[:LIKED{timestamp:2020}]->(Document10)
+CREATE (ken)-[:LIKED{timestamp:2010}]->(Document7)
+CREATE (ken)-[:LIKED{timestamp:2010}]->(Document11)
+
+# Recommend Major Tom an Document based on Documents that he liked
+# Find out what other Documents did the users who liked the Documents that Major Tom liked also liked
+# Ensure that Major Tom has not yet liked these Documents
+# Count the frequency of these Documents liked by the users supposedly similar to Major Tom (since they liked the same Document before)
+# Output the list of Documents sorted by descending frequency 
+# Documents 11 and 16 are top in the list. The Documents were also from the same location as Major Tom was in, Sengkang.
+MATCH (tom:User {name:"Major Tom"})-[:LIKED]->(a)<-[:LIKED]-(others), (others)-[:LIKED]->(a2)
+WHERE NOT (tom)-[:LIKED]->(a2)
+RETURN a2.name AS Recommended, count(*) AS Frequency ORDER BY Frequency DESC
+
+# Recommend Major Tom an Document based on his user profile!
+# Prev recommendation can be improved because not every user is similar to the same degree to Major Tom. Some people may be more similar to Major Tom's profile!
+# Can recommend Major Tom the Documents that users who are most similar to him in terms of profile liked (and that he hasn't)
+# Based on profile = based on Documents liked, location and age
+
+# Create graph in GDS
+# Using native projection
+CALL gds.graph.create('testing-graph',['User','Document'],'LIKED') YIELD graphName, nodeCount, relationshipCount, createMillis
+
+# Find users who are similar -- based on only Documents liked
+CALL gds.nodeSimilarity.stream('testing-graph')
+YIELD node1, node2, similarity
+RETURN gds.util.asNode(node1).name AS User1, gds.util.asNode(node2).name as User2, similarity
+# Getting the similarity scores results in table form
+
+# Write the relationships + the similarity scores as properties of the relationships
+CALL gds.nodeSimilarity.write('testing-graph', {writeRelationshipType: 'SIMILAR', writeProperty: 'score'}) YIELD nodesCompared, relationshipsWritten
+
+# To compare nodes based on features like locations, need to add them as nodes + relationships
+# For age, the weight of the relationship can be set to the numeric age to preserve the relativity / categorise the ages into bins (e.g. in bins of 10 years)
+# To calculate similarity score based on multiple relationship types: https://community.neo4j.com/t/how-to-find-the-similarity-between-common-nodes-of-multiple-type-nodes/14321/6
+# Tried below
+
+# For now, continuing with current similarity scores, recommend an Document to Major Tom.
+
+# Find most similar user and recommend the Document(s) that this user liked but Major Tom has not liked. 
+# In this case here, Recruit James is the most similar to Major Tom in terms of Documents liked, with a similarity score of 0.4.
+MATCH (tom:User{name:"Major Tom"})-[r:SIMILAR]->(p)
+WITH tom,p,r
+ORDER BY r.score DESC LIMIT 1
+MATCH (p)-[r2:LIKED]->(a2) WHERE NOT (tom)-[:LIKED]->(a2)
+RETURN a2, r.score
+# Documents 11 and 16 are returned. 
+# To return n number of Documents, LIMIT n
+# Return collect(a2) instead to return a single list of the Documents. 
+
+# Recommendation engine including location (to calculate node similarity)
+# Creating Location nodes
+CREATE (Choa:Location{name:'Choa Chu Kang'})
+CREATE (Pun:Location{name:'Punggol'})
+CREATE (Sen:Location{name:'Sengkang'})
+
+# Creating relationships between User nodes and Location nodes
+MATCH (ben:User {name:"Recruit Ben"}), (tom:User {name: "Major Tom"}),  (choa:Location{name:"Choa Chu Kang"}), (sam:User {name:"Capt Sam"}), (aaron:User {name:"Corporal Aaron"}), (ger:User {name:"Private Gerald"}), (james:User {name:"Recruit James"}), (fred:User {name:"Private Fred"}), (rach:User {name:"Sergeant Rachel"}), (ven:User {name:"Major Venice"}), (cal:User {name:"Capt Cally"}), (hen:User {name:"Lieut Henderson"}), (ken:User {name:"General Kenneth"}), (pun:Location{name:"Punggol"}), (sen:Location{name:"Sengkang"})
+
+CREATE (ben)-[:LOCATED]->(choa)
+CREATE (tom)-[:LOCATED]->(sen)
+CREATE (sam)-[:LOCATED]->(choa)
+CREATE (aaron)-[:LOCATED]->(pun)
+CREATE (ger)-[:LOCATED]->(pun)
+CREATE (james)-[:LOCATED]->(sen)
+CREATE (fred)-[:LOCATED]->(choa)
+CREATE (rach)-[:LOCATED]->(pun)
+CREATE (ven)-[:LOCATED]->(sen)
+CREATE (cal)-[:LOCATED]->(choa)
+CREATE (hen)-[:LOCATED]->(pun)
+CREATE (ken)-[:LOCATED]->(sen)
+
+# Create graph using a Cypher projection
+CALL gds.graph.create.cypher('testing-graph-1', 'MATCH(n) WHERE n:User or n:Document or n:Location RETURN id(n) as id', 'MATCH (s:User)-[:LOCATED|:LIKED]->(t) RETURN id(s) as source, id(t) as target') YIELD graphName, nodeCount, relationshipCount, createMillis
+
+# Calculate node similarity based on location and Documents liked
+CALL gds.nodeSimilarity.stream('testing-graph-1')
+YIELD node1, node2, similarity
+RETURN gds.util.asNode(node1).name AS User1, gds.util.asNode(node2).name as User2, similarity
+# Uses the same Jaccard Similarity formula. 
+
+# Write the relationships + the similarity scores as properties of the relationships
+CALL gds.nodeSimilarity.write('testing-graph-1', {writeRelationshipType: 'SIMILAR-1', writeProperty: 'score'}) YIELD nodesCompared, relationshipsWritten
+
+# Find the most similar user and recommend based on the Documents that user liked.
+# Liked relationships can also be weighted - will affect the similarity score.  
+MATCH (tom:User{name:"Major Tom"})-[r:`SIMILAR-1`]->(p)
+WITH tom,p,r
+ORDER BY r.score DESC LIMIT 1
+MATCH (p)-[r2:LIKED]->(a2) WHERE NOT (tom)-[:LIKED]->(a2)
+RETURN a2, r.score
+
+# Queries from last sesh:
+# Entity as nodes? e.g. Location, what they viewed, what they liked, what they created --> yes, makes sense + relationships
+# How should we combine results from different recommendations? e.g. Document recommendations from different neighbours --> can weigh these recommendations with similarity score
+# To conclude which Document to recommend to the user in this case, can use sum or mean of these similarity scores and compare --> open to discussion
+
+# Say we don't want to find the most similar user, instead we want to look at all the users similar to Major Tom and weigh the recommendations by the similarity scores.
+# Say we take mean of the scores to determine the final Document to recommend. 
+MATCH (tom:User{name:"Major Tom"})-[r:`SIMILAR-1`]->(p)
+WITH tom,p,r
+MATCH (p)-[r2:LIKED]->(a2) WHERE NOT (tom)-[:LIKED]->(a2)
+RETURN a2 AS Document, avg(r.score) AS AverageScore ORDER BY AverageScore DESC
+
+# Recommend Documents liked more recently
+# Order by average timestamp as well
+MATCH (tom:User{name:"Major Tom"})-[r:`SIMILAR-1`]->(p)
+WITH tom,p,r
+MATCH (p)-[r2:LIKED]->(a2) WHERE NOT (tom)-[:LIKED]->(a2)
+RETURN a2 AS Document, avg(r.score) AS AverageScore, avg(r2.timestamp) AS AverageTime ORDER BY AverageScore DESC, AverageTime DESC
+
+# Try the weighted graph
+# Create a graph using Cypher projection with relationship property included this time
+# coalesce gives r.timestamp a default value of 1.0 instead of null (if the timestamp property is not present in relationship r)
+CALL gds.graph.create.cypher('testing-graph-2', 'MATCH(n) WHERE n:User OR n:Document OR n:Location RETURN id(n) AS id', 'MATCH (s:User)-[r:LIKED|LOCATED]->(t) RETURN id(s) AS source, id(t) AS target, coalesce(r.timestamp, 1.0) AS timestamp') YIELD graphName, nodeCount, relationshipCount, createMillis
+
+# Determines node similarity based on location, Documents liked and the timestamp property of the LIKED relationships
+# If 2 users liked the Document in a similar time frame, they will be considered more similar than users who liked the Document in different years (smaller the diff in years, greater the similarity)
+CALL gds.nodeSimilarity.stream('testing-graph-2', { relationshipWeightProperty: 'timestamp' })
+YIELD node1, node2, similarity
+RETURN gds.util.asNode(node1).name AS User1, gds.util.asNode(node2).name AS User2, similarity
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# Say to compare nodes by Age, Location, Documents Liked
+# Create the general Age node
+CREATE (Age:Age)
+
+# Creating relationships between User nodes and Age node, with their age as a property of the relationship
+MATCH (ben:User {name:"Recruit Ben"}), (tom:User {name: "Major Tom"}),  (choa:Location{name:"Choa Chu Kang"}), (sam:User {name:"Capt Sam"}), (aaron:User {name:"Corporal Aaron"}), (ger:User {name:"Private Gerald"}), (james:User {name:"Recruit James"}), (fred:User {name:"Private Fred"}), (rach:User {name:"Sergeant Rachel"}), (ven:User {name:"Major Venice"}), (cal:User {name:"Capt Cally"}), (hen:User {name:"Lieut Henderson"}), (ken:User {name:"General Kenneth"}), (age:Age)
+
+CREATE (ben)-[:AGED{age:2020-ben.born}]->(age)
+CREATE (tom)-[:AGED{age:2020-tom.born}]->(age)
+CREATE (sam)-[:AGED{age:2020-sam.born}]->(age)
+CREATE (aaron)-[:AGED{age:2020-aaron.born}]->(age)
+CREATE (ger)-[:AGED{age:2020-ger.born}]->(age)
+CREATE (james)-[:AGED{age:2020-james.born}]->(age)
+CREATE (fred)-[:AGED{age:2020-fred.born}]->(age)
+CREATE (rach)-[:AGED{age:2020-rach.born}]->(age)
+CREATE (ven)-[:AGED{age:2020-ven.born}]->(age)
+CREATE (cal)-[:AGED{age:2020-cal.born}]->(age)
+CREATE (hen)-[:AGED{age:2020-hen.born}]->(age)
+CREATE (ken)-[:AGED{age:2020-ken.born}]->(age)
+
+# Create graph using a Cypher projection
+CALL gds.graph.create.cypher('testing-graph-3', 'MATCH(n) WHERE n:User OR n:Document OR n:Location OR n:Age RETURN id(n) AS id', 'MATCH (s:User)-[r:LIKED|LOCATED|AGED]->(t) RETURN id(s) AS source, id(t) AS target, coalesce(r.age, 1.0) AS age') YIELD graphName, nodeCount, relationshipCount, createMillis
+
+# Note that the value of relationshipWeightProperty must be a string -- cannot be an array of properties
+# The following code compares each User node with every other User node once because every User node has a common neighbour -- the Age node.
+# The age difference is also taken into account when calculating the nodes similarity.
+CALL gds.nodeSimilarity.stream('testing-graph-3', { relationshipWeightProperty:'age' })
+YIELD node1, node2, similarity
+RETURN gds.util.asNode(node1).name AS User1, gds.util.asNode(node2).name AS User2, similarity
